@@ -1,0 +1,21 @@
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %title Grzegorz Kaczorek - Web and mobile Developer
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %link{href: "css/cv.css", rel: "stylesheet"}/
+    %link{href: "css/font-awesome.css", rel: "stylesheet"}/
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body{"data-offset" => "100", "data-spy" => "scroll", "data-target" => "#navbar"}
+
+    = partial('menu')
+    
+    .container
+      = partial('info')
+      .clearfix
+      = partial('statement')
+
+
