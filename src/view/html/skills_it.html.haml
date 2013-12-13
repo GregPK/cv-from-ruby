@@ -1,0 +1,65 @@
+%h4= i18n.languages_and_technology_stacks
+%table#languages
+  %thead
+    %tr
+      %th.lan= i18n.language 
+      %th=i18n.language_general
+      - resume.skill_taxonomies.each do |icon_type|
+        %th.icons-big{style: "width:40px;"}
+          = icon(icon_type,'2x',i18n.send('icon_'+icon_type))
+  %tbody
+    - resume.languages.each_value do |l|
+      %tr
+        %td= l.name
+        %td.lang-general
+          %div 
+            %span.starcont.icons-big
+              - (1..l.competence.overall).each do
+                = icon('star')
+            %span.starcont.icons-big
+              - (1..(l.competence.overall_max-l.competence.overall)).each do
+                = icon('star-o')
+            %span{style: "lab"}
+              = "(#{l.competence.overall} ⁄ #{l.competence.overall_max})"
+        - l.competence.specific_hash.values.each do |exp|
+          - cl = exp ? 'check-square-o' : 'square-o'
+          %td.cl.icons-big{class: cl}
+            = icon(cl,'2x')
+  %tbody
+    %tr 
+      %td{colspan: "2"}
+        %h4 Other languages I dabbled with:
+        %span (but can hardly consider myself adept)
+        %br/
+        %span
+          = resume.other_languages.join(', ')
+          
+%h4= i18n.databases
+%table#databases
+  %thead
+    %tr
+      %th.lan= i18n.language 
+      %th=i18n.language_general
+      - resume.skill_taxonomies.each do |icon_type|
+        %th.icons-big{style: "width:40px;"}
+          = icon(icon_type,'2x',i18n.send('icon_'+icon_type))
+  %tbody
+    - resume.databases.each do |l|
+      %tr
+        %td= l.name
+        %td.lang-general
+          %div 
+            %span.starcont.icons-big
+              - (1..l.competence.overall).each do
+                = icon('star')
+            %span.starcont.icons-big
+              - (1..(l.competence.overall_max-l.competence.overall)).each do
+                = icon('star-o')
+            %span{style: "lab"}
+              = "(#{l.competence.overall} ⁄ #{l.competence.overall_max})"
+        - l.competence.specific_hash.values.each do |exp|
+          - cl = exp ? 'check-square-o' : 'square-o'
+          %td.cl.icons-big{class: cl}
+            = icon(cl,'2x')
+            
+= presenter(resume.other_it)            

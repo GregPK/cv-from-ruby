@@ -1,0 +1,8 @@
+%tbody
+  %tr
+    %th.lib-lang{colspan: "2"}= header
+  - groups.each do |group|
+    %tr
+      %th.lib-name= group.name
+      %td
+        = ctrl.presenter(group)

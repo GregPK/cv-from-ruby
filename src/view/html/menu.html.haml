@@ -1,22 +1,36 @@
-#navbar.navbar.navbar-fixed-top
-  .navbar-inner
-    .container
-      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+#navbar.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{href: "#"} 
-      .nav-collapse.collapse
-        %ul#navbar-nav.nav
-          %li
-            %a.active{href: "#info"} 
-          %li
-            %a{href: "#profile"} 
-          %li
-            %a{href: "#experience"} 
-          %li
-            %a{href: "#edu"} 
-          %li
-            %a{href: "#skills"} 
-          %li
-            %a{href: "#portfolio"} 
+      %a.navbar-brand{href: "#"}
+        = i18n.page_title
+      /.nav-collapse.collapse
+      %ul#navbar-nav.nav.navbar-nav
+        // %li
+        //   %a.active{href: "#info"}
+        //     = icon('camera-retro','lg')
+        //     = i18n.general_info
+        %li
+          %a{href: "#profile"}
+            = icon('male','lg')
+            = i18n.txt_profile 
+        %li
+          %a{href: "#experience"}
+            = icon('briefcase','lg')
+            = i18n.experience
+        %li
+          %a{href: "#edu"}
+            = icon('book','lg')
+            = i18n.txt_edu 
+        %li
+          %a{href: "#skills"}
+            = icon('cogs','lg')
+            = i18n.skills 
+        %li
+          %a{href: "#portfolio"}
+            = icon('camera-retro','lg')
+            = i18n.portfolio 

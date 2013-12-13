@@ -1,0 +1,13 @@
+
+%table#paradigms.table.table-striped
+  %thead
+    %tr
+      %th=group_desc_header
+      %th=item_desc_header
+  %tbody
+    - groups.each do |group|
+      %tr
+        %th.lib-name.span4{style: "text-align:right;"}=group.name
+        %td
+          = ctrl.presenter(group)
+          

@@ -1,0 +1,16 @@
+{%= _self.head(i18n.txt_edu,null,null,'edu')
+
+- resume.education_formal.each do |edu|
+  .row
+    .col-md-2.headers= i18n.edu_type
+    .col-md-4= edu.type
+  .row
+    .col-md-2.headers= i18n.edu_when
+    .col-md-4= edu.dates
+  .row
+    .col-md-2.headers= i18n.edu_where
+    .col-md-4= edu.where
+  .row
+    .col-md-2.headers= i18n.edu_what
+    .col-md-4= edu.what
+  %hr

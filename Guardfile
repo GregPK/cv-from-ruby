@@ -5,11 +5,15 @@ require "execjs"
 
 guard 'coffeescript', :input => 'src/view/js/*.coffee', :output => 'web/js'
 
-guard 'sass', :input => 'src/view/css/*', :output => 'web/css'
+guard 'sass', 
+  :input => 'src/view/css/*', 
+  :output => 'web/css',
+  :load_paths => ['vendor/assets/stylesheets']
 
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
 #
-guard :shell do
-  watch(/(.*).txt/) {|m| `tail #{m[0]}` }
+guard :shell do 
+  watch(%r{src/.+\.(rb|haml)}) { `rake build` }
+  watch(%r{Rakefile}) { `rake build` }
 end

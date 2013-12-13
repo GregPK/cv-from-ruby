@@ -1,0 +1,2 @@
+class GroupList < GenericGroup 
+end

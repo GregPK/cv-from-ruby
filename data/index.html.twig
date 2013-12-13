@@ -1,0 +1,235 @@
+{% macro head(txt,lev,makehr,id) %}
+    {% if makehr is null %}{% set makehr = true %}{% endif %}
+    {% if lev is null %}
+    {% set lev = 2 %}
+    {% endif %}
+    {% if lev == 2 and makehr %}
+    <hr>
+    {% endif %}
+    <h{= lev =} id="{= id =}">{= txt =}</h{=lev=}>
+
+{% endmacro %}
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{= i18n.pn =}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/cv.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {#<!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">#}
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="100">
+
+<div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">{= i18n.pn =}</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav" id="navbar-nav">
+                    <li><a href="#info" class="active">{= i18n.general_info =}</a></li>
+                    <li><a href="#profile">{= i18n.txt_profile =}</a></li>
+                    <li><a href="#experience">{= i18n.experience =}</a></li>
+                    <li><a href="#edu">{= i18n.txt_edu =}</a></li>
+                    <li><a href="#skills">{= i18n.skills =}</a></li>
+                    <li><a href="#portfolio">{= i18n.portfolio =}</a></li>
+                </ul>
+            </div> <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container span6">
+        {= _self.head(i18n.general_info,2,false,'info') =}
+        <div class="row">
+            <div class="span2 headers">
+                {= i18n.basic_name =}
+            </div>
+            <div class="span2">
+                Grzegorz Kaczorek
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 headers">
+                {= i18n.basic_birth =}
+            </div>
+            <div class="span2">
+                29.04.1986
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 headers">
+                {= i18n.basic_email =}
+            </div>
+            <div class="span2">
+                <a href="mailto:grzegorz.kaczorek@gmail.com">grzegorz.kaczorek@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container span4" id="photo">
+        <img src="img/photo.jpg" alt="">
+        {#<ul class="thumbnails" id>
+            <li class="span3">
+                <a class="thumbnail">
+                    <img src="img/photo.jpg" alt="" style="position:absolute">
+                </a>
+            </li>
+        </ul>#}
+    </div>
+
+    <div class="clearfix"></div>
+
+    {= _self.head('Mission statement/Profile',null,null,'profile') =}
+
+    {= _self.head('Who I am',3) =}
+
+    <div class="row">
+        <div class="span6">
+            <ul>
+                <li><strong>An experienced web developer</strong> - I can work on both back-end with PHP or Ruby or front-end with JavaScript (prefferably CoffeeScript).</li>
+                <li><strong>A team leader</strong> - both in a software engineering setting and beyond it, with good communication skills and excelent grasp of software engineering and the IT market.</li>
+            </ul>
+        </div>
+    </div>
+
+    {= _self.head('Who I am not',3) =}
+
+    <div class="row">
+        <div class="span6">
+            <ul>
+                <li>A person that likes to convert Photoshop projects into HTML. While I have done this in my junior years (and still can), it was always a chore and not something that makes the most use of my skills.</li>
+                <li>A production server administrator - Linux is my primary operating system and I can find my way around setting up any development enviroment, but setting up production servers for performance and stability is beyond by skills and interests.</li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    {= _self.head(i18n.experience,null,null,'experience') =}
+
+    {#{% for exp in data.experience %}#}
+
+
+
+    {#{= _self.head(i18n.txt_edu,null,null,'edu') =}#}
+
+    {= _self.head(i18n.skills,null,null,'skills') =}
+
+    <h3>{= i18n.it_skills =}</h3>
+
+    <hr>
+
+    
+
+        
+
+
+    {= _self.head(i18n.soft_skills) =}
+
+        <table class="table table-striped" id="libs">
+                <thead>
+                        <tr>
+                                <th>{= i18n.soft_skill_area =}</th>
+                                <th>{= i18n.skill =}</th>
+                        </tr>
+                </thead>
+                <tbody class="{= l.id =}">
+                        {% for ssid,l in data.softSkills %}
+                        <tr>
+                                <th class="lib-name">
+                                        {= ssid =}
+                                </th>
+                                <td>
+                    {% for smth in l %}
+                        {= smth =}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    {#<ul>#}
+                                        {#{% for smth in l %}#}
+                        {#<li>{= smth =}</li>#}
+                                        {#{% endfor %}#}
+                    {#</ul>#}
+                                </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+        </table>
+
+
+    
+    {= _self.head(i18n.portfolio_header,null,null,'portfolio') =}
+
+    {= _self.head(i18n.portfolio_header_freelance,3) =}
+
+    {= _self.portfolio(data.portfolioFreelance) =}
+
+  {#
+    {= _self.head(i18n.portfolio_header_gt,3) =}
+    {= _self.portfolio(data.portfolioGT) =}
+    #}
+
+</div>
+<!-- /container -->
+
+<div class="container">
+{% if i18n.missing|length > 0 %}
+<pre>
+{= i18n.getMissingVE()|raw =}
+</pre>
+{% endif %}
+</div>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+                $('i[title]').tooltip();
+        });
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37851597-1']);
+  _gaq.push(['_setDomainName', 'gkaczorek.pl']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+class ToolchainGroup < GenericGroup
+end

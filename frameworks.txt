@@ -1,0 +1,30 @@
+Symfony 2.0/2.1:full Yii:full Silex:full CodeIgniter:full 
+Opencart:ecommerce Magento:ecommerce osCommerce:ecommerce
+Drupal 7/8:cms WordPress:cms Joomla:cms MODx:cms
+Doctrine2:orm PHP-ActiveRecord:orm Propel:orm
+ADODB:dbal NotORM:dbal RedBeanPHP:dbal
+Smarty:templating Twig:templating PHPTAL:templating
+PHPMailer:mail SwiftMailer:mail
+PHPUnit:testing Selenium:testing
+Phing:ci_cd, Composer:ci_cd
+====================================
+jQuery:front-end Backbone.js:front-end Ember.js:front-end
+Node.js:backend
+Mustache:templating ICanHaz:templating doT.js:templating
+D3.js:chartinggraphics jqPlot:chartinggraphics Flotr:chartinggraphics Google Charts:chartinggraphics
+QUnit:testing Jasmine:testing
+Grunt:ci_cd
+====================================
+Ruby on Rails:full Sinatra:micro
+Compass:replacement Sass:replacement Coffeescript:replacement
+HAML:parsers Nokogiri:parsers Redcarpet:parsers
+RSpec:testing
+Resque:background-jobs Sidekiq:background-jobs
+Capistrano:deployment Mina:deployment Vlad:deployment
+Guard:other Whenever:other Pry:other Letter Opener:other
+====================================
+Android SDK:mobile Android NDK:mobile Bouncy Castle:security
+====================================
+Django:libraries Flask:libraries SQLAlchemy:libraries SciPi:libraries numpy:libraries
+====================================
+

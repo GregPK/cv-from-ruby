@@ -1,18 +1,19 @@
-.container.span6
+.container.col-md-6
   .row
-    .span2.headers
-    .span2
-      Grzegorz Kaczorek
+    .col-md-2.headers
+    .col-md-2
+      = resume.person_data.full_name
   .row
-    .span2.headers
-    .span2
-      29.04.1986
+    .col-md-2.headers
+    .col-md-2
+      = resume.person_data.date_of_birth
   .row
-    .span2.headers
-    .span2
-      %a{href: "mailto:grzegorz.kaczorek@gmail.com"} grzegorz.kaczorek@gmail.com
+    .col-md-2.headers
+    .col-md-2
+      %a{href: resume.person_data.email} 
+        = resume.person_data.email
 
-#photo.container.span4
-  %img{alt: "", src: "img/photo.jpg"}/
+#photo.container.col-md-4
+  / %img{alt: "", src: "img/photo.jpg"}/
 
 

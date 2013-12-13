@@ -1,0 +1,14 @@
+- [resume.portfolio_freelance].each do |portfolio_group|
+  %ul.thumbnails
+    - portfolio_group.each do |item|
+      %li.col-md-4.portitem
+        .thumbnail
+          %a{href: item.url}
+            %img{alt: item.title, src: img(item.img_file), style: "width: 300px; height: 200px;"}/
+            %span.url.muted= item.url
+          %h3= item.title
+          %p=item.descr
+          - if item.responsibilities
+            %p
+              %strong Responsibilities:
+              = item.responsibilities

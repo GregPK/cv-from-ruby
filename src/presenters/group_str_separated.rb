@@ -1,0 +1,2 @@
+class GroupStrSeparated < GenericGroup 
+end
