@@ -34,6 +34,13 @@ class MainController
     Haml::Engine.new(contents).render(self)
   end
   
+  def title(level,title,id=nil)
+    str = ""
+    str += "<a name=\"#{id}\"></a>\n" unless id.nil?
+    str += "<h#{level}>#{title}</h#{level}>"
+    str 
+  end
+  
   def img(name)
     img_dir+name
   end

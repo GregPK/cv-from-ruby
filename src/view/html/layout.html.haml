@@ -21,6 +21,9 @@
     
     .container
       = partial('info')
+
+      = partial('contact_other')
+
       .clearfix
       = partial('statement')
       
@@ -31,14 +34,16 @@
       = partial('education')  
       
     .container
-      = partial('skills_it')
-      
-    .container
-      = partial('skills_other')  
+      = partial('skills')
       
     .container
       = partial('portfolio')
     
     .container
       = partial('libs')
+
+    %script{src: 'js/jquery-1.10.2.min.js'}
+    %script{src: 'js/bootstrap.min.js'}
+    
+      
       

@@ -1,21 +1,25 @@
+= title(2,i18n.experience,'experience')
+
 - resume.companies.each do |company|
   - company.positions.each do |pos|
-    .row.experience
-      .col-md-2.headers= i18n.experience_position 
-      .col-md-4
-        %strong= pos.name 
-        
-    .row.experience
-      .col-md-2.headers= i18n.experience_from
-      .col-md-4= pos.dates
-        
-    .row.experience
-      .col-md-2.headers= i18n.experience_employer
-      .col-md-4= company.name
-        
-    .row.experience
-      .col-md-2.headers= i18n.experience_responsibilities   
-      .col-md-4 
-        %ul
-          - pos.tasks.each do |task|
-            %li= task
+    .experience-item
+      .row.experience.position
+        .col-md-2.headers= i18n.experience_position 
+        .col-md-4
+          %strong= pos.name 
+          
+      .row.experience
+        .col-md-2.headers= i18n.experience_from
+        .col-md-4= pos.dates
+          
+      .row.experience
+        .col-md-2.headers= i18n.experience_employer
+        .col-md-4= company.name
+          
+      .row.experience
+        .col-md-2.headers= i18n.experience_responsibilities   
+        .col-md-4 
+          %ul
+            - pos.tasks.each do |task|
+              %li= task
+    %hr          

@@ -1,6 +1,17 @@
+@import "bootstrap/variables"
+@import "bootstrap/bootswatch/united/variables"
+
+$background-soft-brand: lighten(complement($brand-primary),50%)
+
+@mixin left-align-and-bold()
+  text-align: left
+  font-weight: bold
+  font-style: normal
+
 body
   min-height: 2000px
   padding-top: 70px
+
 
 .lang-general
   span
@@ -29,8 +40,9 @@ td.check
 #languages .lan
   width: 180px
 
-.experience .headers
-  text-align: right
+.education
+  .type
+    font-weight: bold
 
 .portitem .thumbnail
   height: 410px
@@ -41,5 +53,17 @@ td.check
     position: absolute
     left: 50px
     
+.headers
+  font-style: italic
+  text-align: right
+  @media (max-width: $screen-sm-max) // make the "table" header left aligned in lower widths
+    @include left-align-and-bold()
+    &:after
+      content: ":" 
+
+.experience-item
+  padding-top: 10px
+
+
 @import "bootstrap"
 @import "fontawesome"

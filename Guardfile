@@ -16,4 +16,5 @@ guard 'sass',
 guard :shell do 
   watch(%r{src/.+\.(rb|haml)}) { `rake build` }
   watch(%r{Rakefile}) { `rake build` }
+  watch(%r{vendor/assets/javascripts/*\.js}) { `cp vendor/assets/javascripts/*.js web/js` }
 end

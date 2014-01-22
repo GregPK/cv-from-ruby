@@ -6,8 +6,8 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @person_data if @person_data
     
     @person_data = PersonData.new(
-      "Grzegorz","Kaczorek",
-      Time.mktime(1986,4,29),
+      "Grzegorz"," Kaczorek",
+      Time.mktime(1986,4,29).to_date,
       "grzegorz.kaczorek@gmail.com",
     )
   end
@@ -81,9 +81,10 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  
 	  @languages = {}
 	  @languages[:php] = Language.new("PHP",9)
-	  @languages[:ruby] = Language.new("Ruby",8)
-	  @languages[:js] = Language.new("JavaScript",7)
+	  @languages[:ruby] = Language.new("Ruby",9)
+	  @languages[:js] = Language.new("JavaScript - front-end",8)
 	  @languages[:java] = Language.new("Java SE/EE",6)
+	  @languages[:js_node] = Language.new("JavaScript - node.js",6,false,false)
 	  @languages[:net] = Language.new(".NET/C#",6,false)
 	  @languages[:python] = Language.new("Python",5,false,false)
 	  @languages[:c] = Language.new("C/C++",3,false,false,false)
@@ -97,9 +98,11 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  
 	  @databases = []
 	  @databases << Database.new("MySQL",9)
-	  @databases << Database.new("PostgreSql",8,false)
+	  @databases << Database.new("PostgreSql",8)
 	  @databases << Database.new("SQLite",7,false)
 	  @databases << Database.new("CouchDB, CouchServer",6,false,false)
+	  @databases << Database.new("Oracle DB / PLSQL",3,false)
+	  @databases << Database.new("MS SQL Server / PLSQL",3,false)
 	end
 	
 	def other_it
@@ -208,6 +211,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @libs = []
 	  
 	  @languages.each_value do |lang|
+	    next if lang.toolchain.size == 0
 	    tp = GroupTableBodyWithHeaderPresenter.new(lang.name)
 	    
 	    lang.toolchain.each do |tcg|
@@ -220,6 +224,18 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @libs
 	end
 	      
+	def socials
+	  
+	  portals = [
+	    ["linkedin",""],
+	    ["github",""],
+	    ["google-plus",""],
+	    ["twitter",""],
+	    ["stack-exchange",""]
+    ]
+	  
+	  { "portals" => portals, "size" => 2, "addclass" => '-square' }
+	end
 	
 	###################################
 	private 
@@ -246,16 +262,16 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
         "ci_cd"=>["Grunt"],
       },
       "ruby" => {
-        "micro"=>["Ruby", "on", "Rails", "Sinatra"],
+        "micro"=>["Ruby on Rails", "Sinatra"],
         "replacement"=>["Compass", "Sass", "Coffeescript"],
-        "parsers"=>["HAML", "Nokogiri", "Redcarpet"],
+        "parsers"=>%w{ERB HAML Nokogiri Redcarpet},
         "testing"=>["RSpec"],
         "background-jobs"=>["Resque", "Sidekiq"],
         "deployment"=>["Capistrano", "Mina", "Vlad"],
-        "other"=>["Guard", "Whenever", "Pry", "Letter", "Opener"],
+        "other"=>["Guard", "Whenever", "Pry", "Letter Opener"],
       },
       "java" => {
-        "security"=>["Android", "SDK", "Android", "NDK", "Bouncy", "Castle"],
+        "security"=>["Android", "SDK", "Android", "NDK", "Bouncy Castle"],
       },
       "c" => {
         "libraries"=>["Django", "Flask", "SQLAlchemy", "SciPi", "numpy"],

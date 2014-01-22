@@ -36,6 +36,8 @@ class I18n
       :experience_employer =>"Employer",
       :experience_position =>"Position",
       :experience_responsibilities =>"Responsibilities",
+      :technology =>'Technology',
+      :contact =>'Contact',
       :language =>'Language',
       :language_general =>'Overall competency',
       :libraries_by_language_or_technology =>'Libraries and tools by language',

@@ -1,10 +1,10 @@
 #libs-cont
-  %h4 {= i18n.libraries_by_language_or_technology =}
+  = title(4,i18n.libraries_by_language_or_technology)
   %table#libs.table.table-striped
     %thead
       %tr
-        %th {= i18n.library_group =}
-        %th {= i18n.libraries =}
+        %th= i18n.library_group
+        %th= i18n.libraries
     - resume.libs.each do |l|
       = presenter(l)
     
