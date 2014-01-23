@@ -1,16 +1,16 @@
 = title(2,i18n.txt_edu,'edu')
- 
+
 - resume.education_formal.each do |edu|
   .row.education
-    .col-md-2.headers= i18n.edu_type
-    .col-md-4.type= edu.type
+    .col-md-3.headers= i18n.edu_type
+    .col-md-9.type= edu.type
   .row.education
-    .col-md-2.headers= i18n.edu_when
-    .col-md-4= edu.dates
+    .col-md-3.headers= i18n.edu_when
+    .col-md-9= edu.dates
   .row.education
-    .col-md-2.headers= i18n.edu_where
-    .col-md-4= edu.where
+    .col-md-3.headers= i18n.edu_where
+    .col-md-9= edu.where
   .row.education
-    .col-md-2.headers= i18n.edu_what
-    .col-md-4= edu.what
+    .col-md-3.headers= i18n.edu_what
+    .col-md-9= edu.what
   %hr

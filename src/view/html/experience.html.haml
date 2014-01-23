@@ -4,21 +4,21 @@
   - company.positions.each do |pos|
     .experience-item
       .row.experience.position
-        .col-md-2.headers= i18n.experience_position 
-        .col-md-4
+        .col-md-3.headers= i18n.experience_position
+        .col-md-9
           %strong= pos.name 
           
       .row.experience
-        .col-md-2.headers= i18n.experience_from
-        .col-md-4= pos.dates
+        .col-md-3.headers= i18n.experience_from
+        .col-md-9= pos.dates
           
       .row.experience
-        .col-md-2.headers= i18n.experience_employer
-        .col-md-4= company.name
+        .col-md-3.headers= i18n.experience_employer
+        .col-md-9= company.name
           
       .row.experience
-        .col-md-2.headers= i18n.experience_responsibilities   
-        .col-md-4 
+        .col-md-3.headers= i18n.experience_responsibilities
+        .col-md-9
           %ul
             - pos.tasks.each do |task|
               %li= task

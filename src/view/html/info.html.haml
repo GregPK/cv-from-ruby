@@ -1,4 +1,7 @@
-.container.col-sm-6.well
+
+.container.col-sm-6
+  = title(2,i18n.general_info,'profile')
+
   .row
     .col-sm-3.headers= i18n.basic_name 
     .col-sm-4
@@ -12,14 +15,23 @@
     .col-sm-4
       %a{href: resume.person_data.email} 
         = resume.person_data.email
+  -#.row
+    .col-sm-3.headers= i18n.online_presence
+    .col-sm-4.online-presence
+      - resume.socials['portals'].each do |s,name,link|
+        %a.btn.btn-default{href: link}
+          = icon "#{s}#{resume.socials['addclass']}", "#{resume.socials['size']}x"
+          = name
+        %br
+
+  = partial('experience')
 
 -# do not show photo in dev
-  .photo.container.col-sm-4
+.photo.container.col-sm-3
+  .thumbnail
     %img{alt: "", src: "img/photo.jpg"}/
-
-- resume.socials['portals'].each do |s,link|
-  = icon "#{s}#{resume.socials['addclass']}", "#{resume.socials['size']}x"
-
-
-
-
+    .btn-group
+      - resume.socials['portals'].each do |s,name,link|
+        %a.btn.btn-default{href: link}
+          = icon "#{s}#{resume.socials['addclass']}", "#{resume.socials['size']}"
+          -#= name

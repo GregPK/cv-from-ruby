@@ -26,6 +26,7 @@ class I18n
       :basic_name =>'Full name',
       :basic_birth =>'Date of birth',
       :basic_email =>'E-mail',
+      :online_presence =>'Online presence',
       :skills =>"Skills",
       :portfolio =>"Portfolio",
       :portfolio_header =>"Portfolio (shortened)",

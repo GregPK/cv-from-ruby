@@ -17,12 +17,25 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @companies if @companies
     
     @companies = []
+    acx = Company.new('Acxiom')
+    acx.positions << Position.new(
+        "Solutions developer",
+        "May 2013 – Present",
+        [
+            'Developing software solutions in a variety of technologies: Ruby, .NET, Java (Web APIs, Spring, Play), Adobe Campaign (Neolane)',
+            'Coaching developers on Web Development',
+            'Designing software architecture for new projects',
+            'Estimating the impact of customer requests',
+            'Introducing open source into the enterprise'
+        ]
+    )
+
     gt = Company.new('Grafinet')
     gt.positions << Position.new(
       "Senior programmer / Team leader",
-      "September 2009 – Present",
+      "September 2009 – April 2013",
       [
-        'Programming websites and applications for clients (PHP, Ruby, Python)',
+        'Programming websites and applications for clients (PHP, Ruby)',
         'Programming mobile applications for clients (Android)',
         'Research and development in software technology',
         'Research and development in online marketing',
@@ -36,7 +49,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       "Programmer",
       "December 2007 – August 2009",
       [
-        'Programming websites and applications for clients (PHP, Ruby, Python)',
+        'Programming websites and applications for clients (PHP, Ruby)',
         'Designing and implementing a new version of the in-house CMS',
         'Designing and implementing tools for SEO',
         'Day to day website maintenance for clients',
@@ -52,6 +65,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
         'Day to day website maintenance for clients',
       ]
     )
+    @companies << acx
     @companies << gt
     
     
@@ -185,7 +199,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       nil,
       'Take a look at some of my open source projects. Not my best work, but putting it out there nonetheless.<br>
       Other projects coming as we speak&hellip; Err&hellip; read&hellip; well&hellip; communicate.',
-      "portfolio/github.png",
+      "portfolio/github.jpg",
     )
   end
 	
@@ -225,16 +239,17 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	end
 	      
 	def socials
-	  
+    return @socials if @socials
+
 	  portals = [
-	    ["linkedin",""],
-	    ["github",""],
-	    ["google-plus",""],
-	    ["twitter",""],
-	    ["stack-exchange",""]
+	    ["linkedin","LinkedIn",""],
+	    ["github","GitHub"],
+	    ["google-plus","Google Plus"],
+	    ["twitter","Twitter"],
+	    ["stack-exchange","Stack Exchange"]
     ]
-	  
-	  { "portals" => portals, "size" => 2, "addclass" => '-square' }
+
+    @socials = { "portals" => portals, "size" => 'lg', "addclass" => '' }
 	end
 	
 	###################################

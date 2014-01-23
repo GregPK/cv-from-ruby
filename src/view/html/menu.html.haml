@@ -1,39 +1,36 @@
-%nav.navbar.navbar-default.navbar-fixed-top
-  .navbar-header
-    %button.navbar-toggle{"data-target" => "#menu", "data-toggle" => "collapse", type: "button"}
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    %a.navbar-brand{href: "#"}
-      = i18n.page_title
-  #menu.collapse.navbar-collapse
-    %ul.nav.navbar-nav
-      %li
-        %a.active{href: "#profile"}
-          = icon('male','lg')
-          = i18n.txt_profile 
-      %li
-        %a{href: "#experience"}
-          = icon('briefcase','lg')
-          = i18n.experience
-      %li
-        %a{href: "#edu"}
-          = icon('book','lg')
-          = i18n.txt_edu 
-      %li
-        %a{href: "#skills"}
-          = icon('cogs','lg')
-          = i18n.skills 
-      %li
-        %a{href: "#portfolio"}
-          = icon('camera-retro','lg')
-          = i18n.portfolio 
-      %li
-        %a{href: "#technology"}
-          = icon('desktop','lg')
-          = i18n.technology 
-      %li
-        %a{href: "#contact"}
-          = icon('envelope','lg')
-          = i18n.contact         
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#menu", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "#"}
+        = i18n.page_title
+    #menu.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a.active{href: "#profile"}
+            = icon('male','lg')
+            = i18n.txt_profile
+        %li
+          %a{href: "#experience"}
+            = icon('briefcase','lg')
+            = i18n.experience
+        %li
+          %a{href: "#edu"}
+            = icon('book','lg')
+            = i18n.txt_edu
+        %li
+          %a{href: "#skills"}
+            = icon('cogs','lg')
+            = i18n.skills
+        %li
+          %a{href: "#portfolio"}
+            = icon('camera-retro','lg')
+            = i18n.portfolio
+        %li
+          %a{href: "#technology"}
+            = icon('desktop','lg')
+            = i18n.technology

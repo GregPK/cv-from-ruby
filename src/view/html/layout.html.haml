@@ -22,17 +22,14 @@
     .container
       = partial('info')
 
-      = partial('contact_other')
-
       .clearfix
       = partial('statement')
-      
     .container
-      = partial('experience')
-      
-    .container
-      = partial('education')  
-      
+      .row
+        .col-sm-6
+          = partial('education')
+
+    .clearfix
     .container
       = partial('skills')
       

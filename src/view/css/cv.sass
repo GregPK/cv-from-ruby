@@ -47,14 +47,9 @@ td.check
 .portitem .thumbnail
   height: 410px
 
-#photo
-  position: relative
-  img
-    position: absolute
-    left: 50px
-    
 .headers
-  font-style: italic
+  font-size: 85%
+  line-height: 1.5em
   text-align: right
   @media (max-width: $screen-sm-max) // make the "table" header left aligned in lower widths
     @include left-align-and-bold()
@@ -64,6 +59,8 @@ td.check
 .experience-item
   padding-top: 10px
 
+.photo .thumbnail
+  text-align: center
 
 @import "bootstrap"
 @import "fontawesome"
