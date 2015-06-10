@@ -52,8 +52,12 @@ class MainController
     "<i class=\"fa fa-#{ico}#{size}\"#{title}></i>"
   end
   
+  def obfuscate(str)
+    str.chars.map{ |e| e.codepoints.first+23 }.join(",")
+  end
+  
   def img_dir
-    "/img/"
+    "img/"
   end
   
   def tpl_dir

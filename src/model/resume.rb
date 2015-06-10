@@ -9,6 +9,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       "Grzegorz"," Kaczorek",
       Time.mktime(1986,4,29).to_date,
       "grzegorz.kaczorek@gmail.com",
+      "+48 698 157 055"
     )
   end
   
@@ -17,7 +18,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @companies if @companies
     
     @companies = []
-    acx = Company.new('Acxiom')
+    acx = Company.new('Acxiom Global Service Center')
     acx.positions << Position.new(
         "Solutions developer",
         "May 2013 – Present",
@@ -127,7 +128,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	    ["CVS","SVN","Git","(branching, forking, cooperation)"]
     )
     @other_it.groups << GroupStrSeparated.new('Used paradigms',
-	    ["DP","OOP","TDD","BDD",'CI/CD']
+	    ["Design Patterns","OOP","TDD","BDD",'CI/CD']
     )
     @other_it.groups << GroupStrSeparated.new('High performance',
 	    ["Async I/O","Messaging systems","Eventual consistency"]
@@ -242,11 +243,11 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @socials if @socials
 
 	  portals = [
-	    ["linkedin","LinkedIn",""],
-	    ["github","GitHub"],
-	    ["google-plus","Google Plus"],
-	    ["twitter","Twitter"],
-	    ["stack-exchange","Stack Exchange"]
+	    ["linkedin","LinkedIn","http://www.linkedin.com/profile/view?id=34861578&trk=nav_responsive_tab_profile"],
+	    ["github","GitHub","http://github.com/GregPK"],
+	    ["google-plus","Google Plus",'https://plus.google.com/+KaczorekGrzegorz/posts'],
+	    ["twitter","Twitter",'https://twitter.com/GregPK'],
+	    ["stack-exchange","Stack Exchange",'http://stackoverflow.com/users/1358112/gregpk']
     ]
 
     @socials = { "portals" => portals, "size" => 'lg', "addclass" => '' }
@@ -258,38 +259,42 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	def setup_libs
 	  libs = {
 	    "php" => {
-    	  "full"=>["Symfony 2.0/2.1", "Yii", "Silex", "CodeIgniter"],
+    	  "framework"=>["Symfony 2.0/2.1", "Yii", "Silex", "CodeIgniter"],
         "ecommerce"=>["Opencart", "Magento", "osCommerce"],
-        "cms"=>["Drupal 7/8", "WordPress", "Joomla", "MODx"],
+        "cms"=>["Drupal 7/8", "WordPress", "MODx"],
         "orm"=>["Doctrine2", "PHP-ActiveRecord", "Propel"],
         "dbal"=>["ADODB", "NotORM", "RedBeanPHP"],
-        "templating"=>["Smarty", "Twig", "PHPTAL"],
+        "templating"=>["Twig","Smarty","PHPTAL"],
         "mail"=>["PHPMailer", "SwiftMailer"],
         "testing"=>["PHPUnit", "Selenium"],
         "ci_cd"=>["Phing", "Composer"],
       },
       "js" => {
-        "front-end"=>["jQuery", "Backbone.js", "Ember.js"],
-        "backend"=>["Node.js"],
-        "templating"=>["Mustache", "ICanHaz", "doT.js"],
-        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google", "Charts"],
+        "front_end"=>["jQuery", "Ember.js", "Backbone.js"],
+        "backend"=>["Node.js", "Sails"],
+        "templating"=>["Mustache", "Handlebars"],
+        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google Charts"],
         "testing"=>["QUnit", "Jasmine"],
         "ci_cd"=>["Grunt"],
       },
       "ruby" => {
-        "micro"=>["Ruby on Rails", "Sinatra"],
-        "replacement"=>["Compass", "Sass", "Coffeescript"],
-        "parsers"=>%w{ERB HAML Nokogiri Redcarpet},
-        "testing"=>["RSpec"],
-        "background-jobs"=>["Resque", "Sidekiq"],
+        "framework"=>["Ruby on Rails", "Sinatra"],
+        "replacement"=>["Sass", "CoffeeScript"],
+        "templating"=>%w{ERB HAML},
+        "testing"=>["RSpec", "MiniTest","Capybara"],
+        "background_jobs"=>["Resque", "Sidekiq"],
         "deployment"=>["Capistrano", "Mina", "Vlad"],
-        "other"=>["Guard", "Whenever", "Pry", "Letter Opener"],
+        "other"=>["Guard", "Whenever", "Pry", "Letter Opener","Nokogiri","Redcarpet"],
       },
       "java" => {
-        "security"=>["Android", "SDK", "Android", "NDK", "Bouncy Castle"],
+        "mobile" => ["Android SDK", "Android NDK"],
+        "security" => ["Bouncy Castle"],
+        "webservices" => ["JAX-WS"],
+        "testing" => ["JUnit","Mockito"]
       },
-      "c" => {
-        "libraries"=>["Django", "Flask", "SQLAlchemy", "SciPi", "numpy"],
+      "python" => {
+        "framework" => ["Django", "Flask"],
+        "libraries" => ["SQLAlchemy", "SciPi", "numpy"],
       },
     }
     

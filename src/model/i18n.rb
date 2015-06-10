@@ -9,7 +9,7 @@ class I18n
   def method_missing(name, *args, &block)
     @dictionary.fetch(name.to_sym) do 
       @dictionary.send(name, *args, &block) if @dictionary.respond_to? name
-      "<span style='color:#fff;font-weight:bold'>#{name}</span>"
+      "<span style='color:pink;font-weight:bold'>#{name}</span>"
     end
   end
  
@@ -26,6 +26,7 @@ class I18n
       :basic_name =>'Full name',
       :basic_birth =>'Date of birth',
       :basic_email =>'E-mail',
+      :basic_phone =>'Phone',
       :online_presence =>'Online presence',
       :skills =>"Skills",
       :portfolio =>"Portfolio",
@@ -44,7 +45,7 @@ class I18n
       :libraries_by_language_or_technology =>'Libraries and tools by language',
       :libraries =>'Name',
       :library_group =>'Group/usage',
-      :smth_prog_group_full => 'Full-stack framework',
+      :smth_prog_group_framework => 'Framework',
       :smth_prog_group_micro => 'Micro-framework' ,
       :smth_prog_group_orm => 'ORM' ,
       :smth_prog_group_dbal => 'DBAL' ,
@@ -55,6 +56,7 @@ class I18n
       :smth_prog_group_other => 'Other' ,
       :smth_prog_group_front_end => 'Front-end' ,
       :smth_prog_group_backend => 'Back-end' ,
+      :smth_prog_group_webservices => 'Web Services' ,
       :databases => 'Databases and storage',
       :database => 'Database',
       :smth_prog_group_replacement => 'Misc',

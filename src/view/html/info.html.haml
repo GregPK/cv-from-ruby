@@ -13,8 +13,13 @@
   .row
     .col-sm-3.headers= i18n.basic_email
     .col-sm-4
-      %a{href: resume.person_data.email} 
-        = resume.person_data.email
+      %a.obf{href: obfuscate(resume.person_data.email)} 
+        = obfuscate(resume.person_data.email)
+  .row
+    .col-sm-3.headers= i18n.basic_phone
+    .col-sm-4.obf
+      = obfuscate(resume.person_data.phone)
+        
   -#.row
     .col-sm-3.headers= i18n.online_presence
     .col-sm-4.online-presence
