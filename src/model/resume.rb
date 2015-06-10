@@ -6,9 +6,10 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @person_data if @person_data
     
     @person_data = PersonData.new(
-      "Grzegorz","Kaczorek",
-      Time.mktime(1986,4,29),
+      "Grzegorz"," Kaczorek",
+      Time.mktime(1986,4,29).to_date,
       "grzegorz.kaczorek@gmail.com",
+      "+48 698 157 055"
     )
   end
   
@@ -17,12 +18,25 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @companies if @companies
     
     @companies = []
+    acx = Company.new('Acxiom Global Service Center')
+    acx.positions << Position.new(
+        "Solutions developer",
+        "May 2013 – Present",
+        [
+            'Developing software solutions in a variety of technologies: Ruby, .NET, Java (Web APIs, Spring, Play), Adobe Campaign (Neolane)',
+            'Coaching developers on Web Development',
+            'Designing software architecture for new projects',
+            'Estimating the impact of customer requests',
+            'Introducing open source into the enterprise'
+        ]
+    )
+
     gt = Company.new('Grafinet')
     gt.positions << Position.new(
       "Senior programmer / Team leader",
-      "September 2009 – Present",
+      "September 2009 – April 2013",
       [
-        'Programming websites and applications for clients (PHP, Ruby, Python)',
+        'Programming websites and applications for clients (PHP, Ruby)',
         'Programming mobile applications for clients (Android)',
         'Research and development in software technology',
         'Research and development in online marketing',
@@ -36,7 +50,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       "Programmer",
       "December 2007 – August 2009",
       [
-        'Programming websites and applications for clients (PHP, Ruby, Python)',
+        'Programming websites and applications for clients (PHP, Ruby)',
         'Designing and implementing a new version of the in-house CMS',
         'Designing and implementing tools for SEO',
         'Day to day website maintenance for clients',
@@ -52,6 +66,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
         'Day to day website maintenance for clients',
       ]
     )
+    @companies << acx
     @companies << gt
     
     
@@ -81,9 +96,10 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  
 	  @languages = {}
 	  @languages[:php] = Language.new("PHP",9)
-	  @languages[:ruby] = Language.new("Ruby",8)
-	  @languages[:js] = Language.new("JavaScript",7)
+	  @languages[:ruby] = Language.new("Ruby",9)
+	  @languages[:js] = Language.new("JavaScript - front-end",8)
 	  @languages[:java] = Language.new("Java SE/EE",6)
+	  @languages[:js_node] = Language.new("JavaScript - node.js",6,false,false)
 	  @languages[:net] = Language.new(".NET/C#",6,false)
 	  @languages[:python] = Language.new("Python",5,false,false)
 	  @languages[:c] = Language.new("C/C++",3,false,false,false)
@@ -97,9 +113,11 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  
 	  @databases = []
 	  @databases << Database.new("MySQL",9)
-	  @databases << Database.new("PostgreSql",8,false)
+	  @databases << Database.new("PostgreSql",8)
 	  @databases << Database.new("SQLite",7,false)
 	  @databases << Database.new("CouchDB, CouchServer",6,false,false)
+	  @databases << Database.new("Oracle DB / PLSQL",3,false)
+	  @databases << Database.new("MS SQL Server / PLSQL",3,false)
 	end
 	
 	def other_it
@@ -110,7 +128,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	    ["CVS","SVN","Git","(branching, forking, cooperation)"]
     )
     @other_it.groups << GroupStrSeparated.new('Used paradigms',
-	    ["DP","OOP","TDD","BDD",'CI/CD']
+	    ["Design Patterns","OOP","TDD","BDD",'CI/CD']
     )
     @other_it.groups << GroupStrSeparated.new('High performance',
 	    ["Async I/O","Messaging systems","Eventual consistency"]
@@ -182,7 +200,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       nil,
       'Take a look at some of my open source projects. Not my best work, but putting it out there nonetheless.<br>
       Other projects coming as we speak&hellip; Err&hellip; read&hellip; well&hellip; communicate.',
-      "portfolio/github.png",
+      "portfolio/github.jpg",
     )
   end
 	
@@ -208,6 +226,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @libs = []
 	  
 	  @languages.each_value do |lang|
+	    next if lang.toolchain.size == 0
 	    tp = GroupTableBodyWithHeaderPresenter.new(lang.name)
 	    
 	    lang.toolchain.each do |tcg|
@@ -220,6 +239,19 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @libs
 	end
 	      
+	def socials
+    return @socials if @socials
+
+	  portals = [
+	    ["linkedin","LinkedIn","http://www.linkedin.com/profile/view?id=34861578&trk=nav_responsive_tab_profile"],
+	    ["github","GitHub","http://github.com/GregPK"],
+	    ["google-plus","Google Plus",'https://plus.google.com/+KaczorekGrzegorz/posts'],
+	    ["twitter","Twitter",'https://twitter.com/GregPK'],
+	    ["stack-exchange","Stack Exchange",'http://stackoverflow.com/users/1358112/gregpk']
+    ]
+
+    @socials = { "portals" => portals, "size" => 'lg', "addclass" => '' }
+	end
 	
 	###################################
 	private 
@@ -227,38 +259,42 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	def setup_libs
 	  libs = {
 	    "php" => {
-    	  "full"=>["Symfony 2.0/2.1", "Yii", "Silex", "CodeIgniter"],
+    	  "framework"=>["Symfony 2.0/2.1", "Yii", "Silex", "CodeIgniter"],
         "ecommerce"=>["Opencart", "Magento", "osCommerce"],
-        "cms"=>["Drupal 7/8", "WordPress", "Joomla", "MODx"],
+        "cms"=>["Drupal 7/8", "WordPress", "MODx"],
         "orm"=>["Doctrine2", "PHP-ActiveRecord", "Propel"],
         "dbal"=>["ADODB", "NotORM", "RedBeanPHP"],
-        "templating"=>["Smarty", "Twig", "PHPTAL"],
+        "templating"=>["Twig","Smarty","PHPTAL"],
         "mail"=>["PHPMailer", "SwiftMailer"],
         "testing"=>["PHPUnit", "Selenium"],
         "ci_cd"=>["Phing", "Composer"],
       },
       "js" => {
-        "front-end"=>["jQuery", "Backbone.js", "Ember.js"],
-        "backend"=>["Node.js"],
-        "templating"=>["Mustache", "ICanHaz", "doT.js"],
-        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google", "Charts"],
+        "front_end"=>["jQuery", "Ember.js", "Backbone.js"],
+        "backend"=>["Node.js", "Sails"],
+        "templating"=>["Mustache", "Handlebars"],
+        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google Charts"],
         "testing"=>["QUnit", "Jasmine"],
         "ci_cd"=>["Grunt"],
       },
       "ruby" => {
-        "micro"=>["Ruby", "on", "Rails", "Sinatra"],
-        "replacement"=>["Compass", "Sass", "Coffeescript"],
-        "parsers"=>["HAML", "Nokogiri", "Redcarpet"],
-        "testing"=>["RSpec"],
-        "background-jobs"=>["Resque", "Sidekiq"],
+        "framework"=>["Ruby on Rails", "Sinatra"],
+        "replacement"=>["Sass", "CoffeeScript"],
+        "templating"=>%w{ERB HAML},
+        "testing"=>["RSpec", "MiniTest","Capybara"],
+        "background_jobs"=>["Resque", "Sidekiq"],
         "deployment"=>["Capistrano", "Mina", "Vlad"],
-        "other"=>["Guard", "Whenever", "Pry", "Letter", "Opener"],
+        "other"=>["Guard", "Whenever", "Pry", "Letter Opener","Nokogiri","Redcarpet"],
       },
       "java" => {
-        "security"=>["Android", "SDK", "Android", "NDK", "Bouncy", "Castle"],
+        "mobile" => ["Android SDK", "Android NDK"],
+        "security" => ["Bouncy Castle"],
+        "webservices" => ["JAX-WS"],
+        "testing" => ["JUnit","Mockito"]
       },
-      "c" => {
-        "libraries"=>["Django", "Flask", "SQLAlchemy", "SciPi", "numpy"],
+      "python" => {
+        "framework" => ["Django", "Flask"],
+        "libraries" => ["SQLAlchemy", "SciPi", "numpy"],
       },
     }
     

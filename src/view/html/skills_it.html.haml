@@ -1,4 +1,5 @@
-%h4= i18n.languages_and_technology_stacks
+= title(3,i18n.languages_and_technology_stacks)
+
 %table#languages
   %thead
     %tr
@@ -34,7 +35,7 @@
         %span
           = resume.other_languages.join(', ')
           
-%h4= i18n.databases
+%h3= i18n.databases
 %table#databases
   %thead
     %tr
@@ -61,5 +62,5 @@
           - cl = exp ? 'check-square-o' : 'square-o'
           %td.cl.icons-big{class: cl}
             = icon(cl,'2x')
-            
-= presenter(resume.other_it)            
+= title(3,i18n.paradigm_other_software)
+= presenter(resume.other_it)

@@ -34,6 +34,13 @@ class MainController
     Haml::Engine.new(contents).render(self)
   end
   
+  def title(level,title,id=nil)
+    str = ""
+    str += "<a name=\"#{id}\"></a>\n" unless id.nil?
+    str += "<h#{level}>#{title}</h#{level}>"
+    str 
+  end
+  
   def img(name)
     img_dir+name
   end
@@ -45,8 +52,12 @@ class MainController
     "<i class=\"fa fa-#{ico}#{size}\"#{title}></i>"
   end
   
+  def obfuscate(str)
+    str.chars.map{ |e| e.codepoints.first+23 }.join(",")
+  end
+  
   def img_dir
-    "/img/"
+    "img/"
   end
   
   def tpl_dir
