@@ -18,10 +18,27 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @companies if @companies
     
     @companies = []
+    acx = Company.new('AgriCircle')
+    acx.positions << Position.new(
+        "Senior Ruby developer / Team leader",
+        "March 2014 – Present",
+        [
+            'Implement user stories in a timely fashion',
+            'Coach younger team members',
+            'Write-up user stories, elaborate on technical details',
+            'Assure code quality by code reviews',
+            'Set up standards for consistent coding within the project',
+            'Organize and lead daily Scrum sessions',
+            'Spearhead recruitment efforts',
+            'Perform technical interviews on new candidates',
+            'Represent the company in the local community of programmers',
+        ]
+    )
+
     acx = Company.new('Acxiom Global Service Center')
     acx.positions << Position.new(
         "Solutions developer",
-        "May 2013 – Present",
+        "May 2013 – February 2014",
         [
             'Developing software solutions in a variety of technologies: Ruby, .NET, Java (Web APIs, Spring, Play), Adobe Campaign (Neolane)',
             'Coaching developers on Web Development',
