@@ -11,3 +11,9 @@ $(document).ready ->
     val = deobfuscateElem($e.html())
     $e.html(val)
     $e.attr('href',"mailto:"+val)
+
+  $(".nav.navbar-nav a").on('click', (e) ->
+    e.preventDefault()
+    $target = $("a[name="+$(this).attr("href").replace("#","")+"]")
+    $("html, body").animate({ scrollTop: $target.offset().top-45 }, 500);
+  )

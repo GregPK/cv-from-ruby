@@ -23,9 +23,7 @@ OUTFILE = "web/index.html"
 task :build do |t|
   puts "Generating..."
   mc = MainController.new
-  puts mc.index
   data = File.open(OUTFILE, 'w') { |file| file.write(mc.index) }
-
   puts "Generated properly"
 end
 

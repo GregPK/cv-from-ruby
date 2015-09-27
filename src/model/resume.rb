@@ -13,7 +13,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     )
   end
   
-   
+
   def companies
     return @companies if @companies
     
@@ -204,14 +204,14 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @portfolio_freelance << PortfolioItem.new(
 	    'Wooloo.pl',
 	    'http://wooloo.pl',
-      'Backend programming, programming team leader.',
+      'CTO, Backend programming..',
       'A platform where you can find trusted individuals to help you with your todos and grant you more time.',
       "portfolio/wooloo.png"
     )
     @portfolio_freelance << PortfolioItem.new(
 	    'DokadJechać.pl',
       'http://dokadjechac.pl',
-      'CTO, Back-end and front-end programming.',
+      'Back-end and front-end programming.',
       'A website for Polish travelers aimed at answering the question "Where should I go?"',
       "portfolio/dj.png"
     )
@@ -301,10 +301,10 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
       "ruby" => {
         "framework"=>["Ruby on Rails", "Sinatra"],
         "replacement"=>["Sass", "CoffeeScript"],
-        "templating"=>%w{ERB HAML},
+        "templating"=>%w{ERB HAML SLIM},
         "testing"=>["RSpec", "MiniTest","Capybara"],
-        "background_jobs"=>["Resque", "Sidekiq"],
-        "deployment"=>["Capistrano", "Mina", "Vlad"],
+        "background_jobs"=>['Sidekiq', "ActiveJob"],
+        "deployment"=>["Capistrano", 'Heroku', 'Docker'],
         "other"=>["Guard", "Whenever", "Pry", "Letter Opener","Nokogiri","Redcarpet"],
       },
       "java" => {
