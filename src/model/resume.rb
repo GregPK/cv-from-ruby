@@ -18,8 +18,8 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @companies if @companies
     
     @companies = []
-    acx = Company.new('AgriCircle')
-    acx.positions << Position.new(
+    ac = Company.new('AgriCircle')
+    ac.positions << Position.new(
         "Senior Ruby developer / Team leader",
         "March 2014 – Present",
         [
@@ -83,6 +83,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
         'Day to day website maintenance for clients',
       ]
     )
+    @companies << ac
     @companies << acx
     @companies << gt
     
@@ -112,11 +113,12 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  return @languages if @languages
 	  
 	  @languages = {}
-	  @languages[:php] = Language.new("PHP",9)
+
 	  @languages[:ruby] = Language.new("Ruby",9)
-	  @languages[:js] = Language.new("JavaScript - front-end",8)
+    @languages[:js] = Language.new("JavaScript - front-end",8)
+    @languages[:php] = Language.new("PHP",8)
 	  @languages[:java] = Language.new("Java SE/EE",6)
-	  @languages[:js_node] = Language.new("JavaScript - node.js",6,false,false)
+	  @languages[:js_node] = Language.new("JavaScript - node.js", 6, false,false)
 	  @languages[:net] = Language.new(".NET/C#",6,false)
 	  @languages[:python] = Language.new("Python",5,false,false)
 	  @languages[:c] = Language.new("C/C++",3,false,false,false)
@@ -129,10 +131,12 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  return @databases if @databases
 	  
 	  @databases = []
-	  @databases << Database.new("MySQL",9)
-	  @databases << Database.new("PostgreSql",8)
+
+	  @databases << Database.new("PostgreSql",9)
+    @databases << Database.new("MySQL/Maria",9)
 	  @databases << Database.new("SQLite",7,false)
 	  @databases << Database.new("CouchDB, CouchServer",6,false,false)
+    @databases << Database.new("Riak",4,false,false)
 	  @databases << Database.new("Oracle DB / PLSQL",3,false)
 	  @databases << Database.new("MS SQL Server / PLSQL",3,false)
 	end
@@ -182,7 +186,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	  @soft_skills = GroupTablePresenter.new("Area","Skill")
 	  @soft_skills.groups << GroupList.new('Communication', [
   	"Excellent communication skills in writing and speech",
-		"Experience in leadership (leader of 2 distinct student organizations)",
+		"Experience in leadership (leader of 2 distinct student organizations, Team Leader at several companies)",
     "„Practitioner In Neuro-Linguistic Programming” certificate",
     ])
     @soft_skills.groups << GroupList.new('Pop-psychology',[ 
@@ -260,7 +264,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
     return @socials if @socials
 
 	  portals = [
-	    ["linkedin","LinkedIn","http://www.linkedin.com/profile/view?id=34861578&trk=nav_responsive_tab_profile"],
+	    ["linkedin","LinkedIn","https://pl.linkedin.com/in/gkaczorek"],
 	    ["github","GitHub","http://github.com/GregPK"],
 	    ["google-plus","Google Plus",'https://plus.google.com/+KaczorekGrzegorz/posts'],
 	    ["twitter","Twitter",'https://twitter.com/GregPK'],
@@ -276,7 +280,7 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
 	def setup_libs
 	  libs = {
 	    "php" => {
-    	  "framework"=>["Symfony 2.0/2.1", "Yii", "Silex", "CodeIgniter"],
+    	  "framework"=>["Symfony 2.x", "Yii", "Silex", "CodeIgniter"],
         "ecommerce"=>["Opencart", "Magento", "osCommerce"],
         "cms"=>["Drupal 7/8", "WordPress", "MODx"],
         "orm"=>["Doctrine2", "PHP-ActiveRecord", "Propel"],
@@ -287,12 +291,12 @@ class Resume < Struct.new(:person_data, :companies, :education_formal, :quant_sk
         "ci_cd"=>["Phing", "Composer"],
       },
       "js" => {
-        "front_end"=>["jQuery", "Ember.js", "Backbone.js"],
+        "front_end"=>["Angular", "Ember", "Backbone / Marionette"],
         "backend"=>["Node.js", "Sails"],
         "templating"=>["Mustache", "Handlebars"],
-        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google Charts"],
-        "testing"=>["QUnit", "Jasmine"],
-        "ci_cd"=>["Grunt"],
+        "chartinggraphics"=>["D3.js", "jqPlot", "Flotr", "Google Charts", "Morris"],
+        "testing"=>["QUnit", "Jasmine", "Teaspoon"],
+        "ci_cd"=>["Grunt", "Gulp", 'Bower'],
       },
       "ruby" => {
         "framework"=>["Ruby on Rails", "Sinatra"],
